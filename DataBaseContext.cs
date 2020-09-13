@@ -6,13 +6,7 @@ using System.Threading.Tasks;
 
 namespace API
 {
-    public class Product
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public int Count { get; set; }
-        
-    }
+
     public class DataBaseContext : DbContext
     {
         public DataBaseContext(DbContextOptions<DataBaseContext> options) : base(options)
