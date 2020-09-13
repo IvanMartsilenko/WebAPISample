@@ -18,3 +18,10 @@ After all you can build that solution.
 To get all products use GET https://localhost:5001/products
 To get proucts with current id use https://localhost:5001/products/id 
 typeof(id) = int
+
+Application Url 
+https://localhost:5001
+http://localhost:5000
+
+[Route("[controller]")] with controller name is ProductsController, 
+so link for GET is https://localhost:5001/products
