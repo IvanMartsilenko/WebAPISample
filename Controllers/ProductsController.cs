@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace API.ControllersS
+namespace API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
@@ -19,22 +19,32 @@ namespace API.ControllersS
         }
         
         [HttpGet]
-        public IEnumerable<string> Get() => _db.Products.Select(p => p.Name).ToArray();
+        public Product[] Get() => _db.Products.ToArray();
 
         [HttpGet("{id}")]
-        public string Get(int id) => _db.Products.Find(id).Name;
+        public Product Get(int id)  => _db.Products.Find(id);
 
-        [HttpPost]
-        public void Post([FromBody]string value)
+
+        [HttpPost("Insert")]
+        public void Post(SmallProduct obj)
         {
             Product product = new Product();
-            product.Name = value;
-            product.Count = 6;
+            product.Name = obj.name;
+            product.Count = obj.count;
 
             _db.Products.Add(product); //Insert
             _db.SaveChanges();   //commint
         }
 
+        [HttpDelete]
+        public void Delete()
+        {
+            for(int item=10; item <= 12; item++) 
+            { 
+                _db.Products.Remove(_db.Products.Find(item+10)); 
+            }
+            _db.SaveChanges();
+        }
 
     }
 }

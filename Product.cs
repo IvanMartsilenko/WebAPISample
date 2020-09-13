@@ -11,4 +11,9 @@ namespace API
         public string Name { get; set; }
         public int Count { get; set; }
     }
+    public class SmallProduct
+    {
+        public string name { get; set; }
+        public int count { get; set; }
+    }
 }

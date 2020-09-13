@@ -13,6 +13,17 @@ namespace API
         {
 
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Product>().HasData(new Product()
+            {
+                Id = 1,
+                Count = 4,
+                Name = "test"
+            });
+        }
         public Microsoft.EntityFrameworkCore.DbSet<Product> Products { get; set; }
     }
 }
