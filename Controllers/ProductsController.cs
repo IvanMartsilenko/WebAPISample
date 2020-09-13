@@ -11,7 +11,7 @@ namespace API.ControllersS
     [Route("[controller]")]
     public class ProductsController : ControllerBase
     {
-        DataBase _db;
+        DataBase _db = new DataBase();
 
         public ProductsController(DataBase db)
         {
