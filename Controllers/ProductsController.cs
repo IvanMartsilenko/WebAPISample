@@ -11,18 +11,18 @@ namespace API.ControllersS
     [Route("[controller]")]
     public class ProductsController : ControllerBase
     {
-        DataBase _db = new DataBase();
+        DataBaseContext _db;
 
-        public ProductsController(DataBase db)
+        public ProductsController(DataBaseContext db)
         {
             this._db = db;
         }
         
         [HttpGet]
-        public IEnumerable<Product> Get() => _db;
+        public IEnumerable<string> Get() => _db.Products.Select(p => p.Name).ToArray();
 
         [HttpGet("{id}")]
-        public Product Get(int id) => _db[id];
+        public string Get(int id) => _db.Products.Find(id).Name; // Add ID
 
     }
 }

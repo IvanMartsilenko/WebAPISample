@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -9,12 +9,16 @@ namespace API
     public class Product
     {
         public int Id { get; set; }
-        public string Name { gSet; set; }
+        public string Name { get; set; }
         public int Count { get; set; }
         
     }
     public class DataBaseContext : DbContext
     {
-        public DbSet<Product> Products { get; set; }
+        public DataBaseContext(DbContextOptions<DataBaseContext> options) : base(options)
+        {
+
+        }
+        public Microsoft.EntityFrameworkCore.DbSet<Product> Products { get; set; }
     }
 }
