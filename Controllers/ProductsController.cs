@@ -17,16 +17,12 @@ namespace API.ControllersS
         {
             this._db = db;
         }
-
+        
         [HttpGet]
-        public IEnumerable<Product> Get()
-        {
-            return _db;
-        }
+        public IEnumerable<Product> Get() => _db;
+
         [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "undone";
-        }
+        public Product Get(int id) => _db[id];
+
     }
 }
