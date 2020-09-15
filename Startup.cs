@@ -31,13 +31,7 @@ namespace API
         {
             services.AddDbContext<DataBaseContext>( options => options.UseSqlServer($"Data Source=localhost;Initial Catalog={nameof(DataBaseContext)};Integrated Security=True"));
             services.AddControllers();
-            services.AddSwaggerGen(c =>
-            {
-                // Set the comments path for the Swagger JSON and UI.
-                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-                c.IncludeXmlComments(xmlPath);
-            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,14 +41,9 @@ namespace API
             {
                 app.UseDeveloperExceptionPage();
             }
+
             app.UseRouting();
 
-            app.UseSwagger();
-
-            app.UseSwaggerUI(c =>
-            {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
-            });
 
             app.UseEndpoints(endpoints =>
             {
